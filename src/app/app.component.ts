@@ -8,7 +8,7 @@ import { LoadjsService } from '../app/service/loadjs.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements DoCheck {
-  title = 'authentication';
+  title = 'Warriors Club';
   isadmin = false;
   isMenuVisible = false;
   constructor(private route: Router, private loadjsservic: LoadjsService) {
