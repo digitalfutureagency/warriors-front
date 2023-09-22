@@ -67,16 +67,16 @@ body {
 }
 
 body {
-    font-family: 'Montserrat-Regular';
+    font-family: 'Montserrat-Regular' !important;
     font-size: 1.6rem;
     line-height: 1.5;
-    z-index: 1;
-    font-style: normal;
+    z-index: 1 !important;
+    font-style: normal ;
     font-weight: normal;
-    line-height: 1.778;
-    color: var(--gray);
-    margin: 0;
-    padding: 0;
+    line-height: 1.778 ;
+    color: var(--gray) ;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /*-----------------------------------*\
@@ -112,6 +112,7 @@ body {
 
 .forms-container {
     position: absolute;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
     top: 0;
@@ -228,6 +229,10 @@ form.sign-in-form {
     background: var(--black);
 }
 
+.container {
+    height: 100%;
+}
+
 .btn {
     width: 150px;
     background-color: #5995fd;
@@ -280,7 +285,7 @@ form.sign-in-form {
 .panel {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-around;
     text-align: center;
     z-index: 6;
@@ -288,12 +293,12 @@ form.sign-in-form {
 
 .left-panel {
     pointer-events: all;
-    padding: 3rem 17% 2rem 12%;
+    padding: 8% 17% 2rem 12%;
 }
 
 .right-panel {
     pointer-events: none;
-    padding: 3rem 12% 2rem 17%;
+    padding: 8% 12% 2rem 17%;
 }
 
 .panel .content {
@@ -376,7 +381,7 @@ form.sign-in-form {
 
 @media (max-width: 870px) {
     .container {
-        min-height: 800px;
+        min-height: 1200px;
         height: 100vh;
     }
 
@@ -659,14 +664,17 @@ ion-icon {
     display: flex;
     align-content: center;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
     gap: 1.5rem;
     margin-top: 10rem;
     min-height: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
     align-items: center;
     z-index: 2;
     background-size: cover;
     background-position: center;
+    justify-content: center;
 }
 
 .home-1 .content {
@@ -928,8 +936,8 @@ ion-icon {
   z-index: -1;
 } */
 
-/* .img-3-slideshow {
-    background-image: url('../images/backgrounds/background-1.png');
+.img-3-slideshow {
+    background-image: url('assets/images/backgrounds/background-1.png');
     height: 100vh;
     background-size: cover;
     background-position-x: center;
@@ -941,7 +949,7 @@ ion-icon {
     z-index: 2;
     justify-content: center;
 }
- */
+
 
 /* .img-2-slideshow::after {
   content: "";
@@ -1065,10 +1073,10 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: "Montserrat-Bold";
-    font-weight: 600;
+    font-family: "Montserrat-Bold" !important;
+    font-weight: 600 !important;
     color: #000000;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility !important;
 }
 
 h1,
@@ -7582,7 +7590,6 @@ body[data-route-option="next-section"] .c-header-home_buttons {
 .container {
     position: relative;
     width: 100%;
-    margin-top: 3rem;
     background-color: #fff;
     min-height: 100vh;
     overflow: hidden;
@@ -7620,10 +7627,13 @@ form {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
-
+.sign-up-form {
+    margin-top: 12rem;
+}
 form.sign-up-form {
     opacity: 0;
     z-index: 1;
+    
 }
 
 form.sign-in-form {
@@ -7721,6 +7731,7 @@ form.sign-in-form {
     position: absolute;
     height: 100%;
     width: 100%;
+    margin-top: 5%;
     top: 0;
     left: 0;
     display: grid;
@@ -7745,43 +7756,6 @@ form.sign-in-form {
     width: 100%;
     transition: transform 1.1s ease-in-out;
     transition-delay: 0.4s;
-}
-
-.panel {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-around;
-    text-align: center;
-    z-index: 6;
-}
-
-.left-panel {
-    pointer-events: all;
-    padding: 3rem 17% 2rem 12%;
-}
-
-.right-panel {
-    pointer-events: none;
-    padding: 3rem 12% 2rem 17%;
-}
-
-.panel .content {
-    color: #fff;
-    transition: transform 0.9s ease-in-out;
-    transition-delay: 0.6s;
-}
-
-.panel h3 {
-    font-weight: 600;
-    line-height: 1;
-    font-size: 3rem;
-}
-
-.panel p {
-    font-size: 2rem;
-    padding: 0.7rem 0;
-    color: var(--black);
 }
 
 .btn.transparent {
@@ -7846,8 +7820,11 @@ form.sign-in-form {
 }
 
 @media (max-width: 870px) {
+    .panel img {
+        width: 100%;
+    }
     .container {
-        min-height: 800px;
+        min-height: 1200px;
         height: 100vh;
         margin-top: calc(20px - -50px);
     }

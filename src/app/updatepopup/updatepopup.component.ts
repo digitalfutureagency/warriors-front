@@ -40,7 +40,7 @@ export class UpdatepopupComponent implements OnInit {
   });
 
   loaduserdata(code: any) {
-    this.service.GetUserbyCode(code).subscribe(res => {
+    this.service.LoginUser(code).subscribe(res => {
       this.editdata = res;
       console.log(this.editdata);
       this.registerform.setValue({

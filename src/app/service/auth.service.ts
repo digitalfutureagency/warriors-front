@@ -9,6 +9,7 @@ export class AuthService {
   constructor(private http:HttpClient) { 
 
   }
+
   apiurl='https://warriors-backend-c2d2de5b1d70.herokuapp.com';
 
   /* Register User */
@@ -16,8 +17,13 @@ export class AuthService {
     return this.http.post(this.apiurl + '/api/auth/signup/', inputdata)
   }
 
-  GetUserbyCode(id:any){
-    return this.http.get(this.apiurl+'/'+id);
+  /* Login User */
+  LoginUser(logindata:any){
+    return this.http.post(this.apiurl + '/api/auth/signin/', logindata);
+  }
+  
+  isloggedin(){
+    return sessionStorage.getItem('accessToken')!=null;
   }
 
   Getall(){
@@ -32,9 +38,7 @@ export class AuthService {
     return this.http.get('http://localhost:3000/role');
   }
 
-  isloggedin(){
-    return sessionStorage.getItem('username')!=null;
-  }
+  
 
   getrole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';

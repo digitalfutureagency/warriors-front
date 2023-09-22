@@ -20,50 +20,46 @@ export class LoginComponent {
     sessionStorage.clear();
   }
   result: any;
+  dataLogin: any;
 
   loginform = this.builder.group({
-    id: this.builder.control('', Validators.required),
+    email: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required)
   });
 
   registerform = this.builder.group({
-    firstname: this.builder.control('', Validators.required),
-    lastname: this.builder.control('', Validators.required),
+    firstName: this.builder.control('', Validators.required),
+    lastName: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
-    role: this.builder.control(''),
+    role: this.builder.control('user'),
     /* isactive: this.builder.control(false) */
   });
 
   proceedregister() {
     if (this.registerform.valid) {
       this.service.RegisterUser(this.registerform.value).subscribe(result => {
-        this.toastr.success('Please contact admin for enable access.', 'Registered successfully')
-        this.router.navigate(['login'])
+        this.result = result;
+        this.toastr.success('Registro Exitoso.')
+        console.log(this.result.accessToken)
+        sessionStorage.setItem('accessToken', this.result.accessToken);
+        this.router.navigate(['home'])
       });
     } else {
-      this.toastr.warning('Please enter valid data.')
+      this.toastr.warning('Por favor llene los campos correspondientes.')
     }
   }
 
   proceedlogin() {
     if (this.loginform.valid) {
-      this.service.GetUserbyCode(this.loginform.value.id).subscribe(item => {
-        this.result = item;
-        if (this.result.password === this.loginform.value.password) {
-          if (this.result.isactive) {
-            sessionStorage.setItem('username', this.result.id);
-            sessionStorage.setItem('role', this.result.role);
-            this.router.navigate(['']);
-          } else {
-            this.toastr.error('Please contact Admin', 'InActive User');
-          }
-        } else {
-          this.toastr.error('Invalid credentials');
-        }
+      this.service.LoginUser(this.loginform.value).subscribe(item => {
+        this.dataLogin = item;
+        console.log(item);
+        sessionStorage.setItem('accessToken', this.dataLogin.accessToken);
+        this.router.navigate(['home']);
       });
     } else {
-      this.toastr.warning('Please enter valid data.')
+      this.toastr.warning('Por favor ingrese datos validos.')
     }
   }
 }

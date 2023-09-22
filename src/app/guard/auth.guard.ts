@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     if (this.service.isloggedin()) {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
-        if (menu == 'user') {
+        if (menu == 'accessToken') {
           if (this.service.getrole() == 'admin') {
             return true;
           } else {

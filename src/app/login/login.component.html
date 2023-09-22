@@ -1,11 +1,11 @@
-<div class="container" [ngClass]="{'sign-up-mode': isSignUpMode}">
+<div class="container h-100" [ngClass]="{'sign-up-mode': isSignUpMode}">
   <div class="forms-container">
     <div class="signin-signup">
       <form class="sign-in-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
         <h2 class="title">Iniciar Sesión</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" id="username" placeholder="Usuario" formControlName="id" />
+          <input type="text" id="email" placeholder="Correo" formControlName="email" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
@@ -18,23 +18,19 @@
         <h2 class="title">Registrarse</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Nombres" formControlName="firstname" />
+          <input type="text" placeholder="Nombres" formControlName="firstName" />
         </div>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Apellidos" formControlName="lastname" />
+          <input type="text" placeholder="Apellidos" formControlName="lastName" />
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email" formControlName="email" />
+          <input type="email" placeholder="Correo" formControlName="email" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" formControlName="password" />
-        </div>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="text" placeholder="role" formControlName="role" />
+          <input type="password" placeholder="Contraseña" formControlName="password" />
         </div>
         <input type="submit" class="btn transparent" value="Registrarme" />
       </form>
