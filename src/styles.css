@@ -71,10 +71,10 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     z-index: 1 !important;
-    font-style: normal ;
+    font-style: normal;
     font-weight: normal;
-    line-height: 1.778 ;
-    color: var(--gray) ;
+    line-height: 1.778;
+    color: var(--gray);
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -2812,7 +2812,7 @@ header div {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     position: absolute;
-    right: 40px;
+    right: auto;
     top: 18px;
 }
 
@@ -3911,7 +3911,7 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 
- .s-download {
+.s-download {
     padding-top: 8.4rem;
     background-image: url(assets/logo/degrade-logo.svg), url(assets/images/background.webp);
     background-position: center;
@@ -5903,7 +5903,6 @@ input.whats-input[type=text]:focus {
     height: 40px;
     z-index: 601;
     display: inline-block;
-    margin: 6px 0 0 0;
     padding: 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -5911,7 +5910,7 @@ input.whats-input[type=text]:focus {
     -ms-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
     position: absolute;
-    right: 0;
+    right: 30px;
     top: 50%;
     background: var(--palet-2);
     border-radius: 50%;
@@ -5923,41 +5922,37 @@ input.whats-input[type=text]:focus {
     cursor: pointer;
 }
 
-.img-avatar {
-    border: solid 2px transparent;
-    /*  border-image: var(--palet-1); */
-    border-image-slice: 1;
-    /* Asegura que el degradado cubra todo el borde */
-}
-
 .dropdown {
-    display: none;
+    z-index: 1;
     position: absolute;
-    top: 50px;
-    right: 10px;
-    background-color: white;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    min-width: 150px;
 }
 
 .dropdown-item {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 15px !important;
+    cursor: pointer !important;
 }
 
-.dropdown-item i {
+.dropdown-item:hover {
+    background-color: #f2f2f2;
+}
+
+.bx-log-out {
     margin-right: 10px;
 }
 
-/* Show the dropdown when the avatar is clicked */
-.show-dropdown {
-    display: block;
+.dropdown-item span {
+    font-size: 14px;
+    font-family: 'Montserrat-Bold';
 }
-
 
 .pagination {
     position: absolute !important;
@@ -7627,13 +7622,15 @@ form {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
+
 .sign-up-form {
     margin-top: 12rem;
 }
+
 form.sign-up-form {
     opacity: 0;
     z-index: 1;
-    
+
 }
 
 form.sign-in-form {
@@ -7823,6 +7820,7 @@ form.sign-in-form {
     .panel img {
         width: 100%;
     }
+
     .container {
         min-height: 1200px;
         height: 100vh;
@@ -8643,7 +8641,7 @@ select {
 }
 
 input::placeholder {
-    color:#4b4b4b !important;
+    color: #4b4b4b !important;
 }
 
 .ss-custom-select {
@@ -8984,5 +8982,3 @@ input::-moz-focus-inner {
     background-color: #fff099;
     color: #c3ab22;
 }
-
-

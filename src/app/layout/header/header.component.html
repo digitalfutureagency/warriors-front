@@ -9,17 +9,17 @@
 
         <nav class="header-nav-wrap">
             <ul class="header-main-nav">
-                <li class="current"><a class="smoothscroll" href="#home" title="Inicio">Inicio</a></li>
-                <li><a class="smoothscroll" href="#about" title="Sobre Nosotros">Nosotros</a></li>
-                <li><a class="smoothscroll" href="#ahorro" title="Programas de Ahorro">Ahorros</a></li>
-                <li><a class="smoothscroll" href="#academy" title="Warrior Academy">Academia</a></li>
-                <li><a class="smoothscroll" href="#life-program" title="Desarrollo Personal">Desarrollo Personal</a>
+                <li class="current"><a class="smoothscroll" href="./landing#home" title="Inicio">Inicio</a></li>
+                <li><a class="smoothscroll" href="./landing#about" title="Sobre Nosotros">Nosotros</a></li>
+                <li><a class="smoothscroll" href="./landing#ahorro" title="Programas de Ahorro">Ahorros</a></li>
+                <li><a class="smoothscroll" href="./landing#academy" title="Warrior Academy">Academia</a></li>
+                <li><a class="smoothscroll" href="./landing#life-program" title="Desarrollo Personal">Desarrollo
+                        Personal</a>
                 </li>
-                <li><a class="smoothscroll" href="#join-up" title="download">Únete</a></li>
+                <li><a class="smoothscroll" href="./landing#join-up" title="download">Únete</a></li>
             </ul>
-            <div  class="header-cta">
-                <a href="./login" class="btn btn--primary header-cta__btn">Iniciar Sesión <i
-                        class="icon-user"></i></a>
+            <div class="header-cta">
+                <a href="./login" class="btn btn--primary header-cta__btn">Iniciar Sesión <i class="icon-user"></i></a>
             </div>
         </nav>
         <!-- end header-nav-wrap -->
@@ -34,23 +34,23 @@
         </div>
         <nav class="header-nav-wrap">
             <ul class="header-main-nav">
-                <li class="current"><a class="smoothscroll" href="home/#js-header" title="Inicio">Inicio</a></li>
-                <li><a class="smoothscroll" href="home/#forex" title="Forex">Forex</a></li>
-                <li><a class="smoothscroll" href="home/#sintetics" title="Índices Sinteticos">Índices Sinteticos</a></li>
+                <li class="current"><a class="smoothscroll" href="./home/#js-header" title="Inicio">Inicio</a></li>
+                <li><a class="smoothscroll" href="./home/#forex" title="Forex">Forex</a></li>
+                <li><a class="smoothscroll" href="./home/#sintetics" title="Índices Sinteticos">Índices Sinteticos</a>
+                </li>
             </ul>
         </nav>
-        <div id="user-dropdown" class="avatar">
+        <div id="user-dropdown" class="avatar" (click)="toggleDropdown()">
             <span>
                 <img src="assets/images/avatars/user.png" class="img-avatar" style="border-radius: 20rem;">
             </span>
         </div>
-        <div id="dropdown" class="dropdown">
-            <div id="logout" class="dropdown-item" onclick="redirectToIndex()">
+        <div class="dropdown" *ngIf="showDropdown">
+            <div class="dropdown-item" (click)="logout()">
                 <i class="bx bx-log-out"></i>
                 <span>Cerrar sesión</span>
             </div>
         </div>
-
 
         <!-- end header-nav-wrap -->
         <a class="header-menu-toggle" href="#"><span>Menú</span></a>

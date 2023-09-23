@@ -38,28 +38,57 @@ export class LoginComponent {
 
   proceedregister() {
     if (this.registerform.valid) {
-      this.service.RegisterUser(this.registerform.value).subscribe(result => {
-        this.result = result;
-        this.toastr.success('Registro Exitoso.')
-        console.log(this.result.accessToken)
-        sessionStorage.setItem('accessToken', this.result.accessToken);
-        this.router.navigate(['home'])
-      });
+      this.service.RegisterUser(this.registerform.value).subscribe(
+        (result) => {
+          this.result = result;
+          this.toastr.success('Registro Exitoso.');
+          console.log(this.result.accessToken);
+          sessionStorage.setItem('accessToken', this.result.accessToken);
+          this.router.navigate(['home']);
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+        },
+        (error) => {
+          if (error.status === 401) {
+            console.error('Error 401 Unauthorized:', error);
+            this.toastr.error('Por favor llene los campos correspondientes');
+          } else {
+            console.error('Error en la solicitud:', error);
+            this.toastr.error('Se ha producido un error en la solicitud.');
+          }
+        }
+      );
     } else {
-      this.toastr.warning('Por favor llene los campos correspondientes.')
+      this.toastr.warning('Por favor llene los campos correspondientes.');
     }
   }
 
   proceedlogin() {
     if (this.loginform.valid) {
-      this.service.LoginUser(this.loginform.value).subscribe(item => {
-        this.dataLogin = item;
-        console.log(item);
-        sessionStorage.setItem('accessToken', this.dataLogin.accessToken);
-        this.router.navigate(['home']);
+      this.service.LoginUser(this.loginform.value).subscribe({
+        next: (item) => {
+          this.dataLogin = item;
+          console.log(item);
+          sessionStorage.setItem('accessToken', this.dataLogin.accessToken);
+          this.router.navigate(['home']);
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+        },
+        error: (error) => {
+          if (error.status === 401) {
+            console.error('Error 401 Unauthorized:', error);
+            this.toastr.error('Credenciales incorrectas. Por favor, verifique su contraseña.');
+          } else {
+            console.error('Error en la solicitud:', error);
+            this.toastr.error('El usuario no existe.');
+          }
+        },
       });
     } else {
-      this.toastr.warning('Por favor ingrese datos validos.')
+      this.toastr.warning('Por favor ingrese datos válidos.');
     }
   }
+
 }

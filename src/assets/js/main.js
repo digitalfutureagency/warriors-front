@@ -555,20 +555,6 @@ function loader() {
     document.querySelector('.loader-container').classList.add('fade-out');
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const userDropdown = document.getElementById("user-dropdown");
-    const dropdown = document.getElementById("dropdown");
-    const logoutButton = document.getElementById("logout");
-
-    userDropdown.addEventListener("click", function () {
-        dropdown.classList.toggle("show-dropdown");
-    });
-
-    logoutButton.addEventListener("click", function () {
-        // Implement logout logic here
-    });
-});
-
 popupWhatsApp = () => {
 
     let btnClosePopup = document.querySelector('.closePopup');
