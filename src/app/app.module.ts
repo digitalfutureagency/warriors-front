@@ -16,7 +16,7 @@ import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
 import { CustomerComponent } from './customer/customer.component';
 import { LandingComponent } from './landing/landing.component';
 import { LayoutModule } from './layout/layout.module';
-
+import { CookieModule } from 'ngx-cookie';
 
 
 @NgModule({
@@ -37,7 +37,8 @@ import { LayoutModule } from './layout/layout.module';
     MaterialModule,
     HttpClientModule,
     LayoutModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CookieModule.forRoot()
   ],
   providers: [LoadjsService],
   bootstrap: [AppComponent]

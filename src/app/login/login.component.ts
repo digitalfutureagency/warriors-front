@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../service/auth.service';
+import { CookieService } from 'ngx-cookie';
+
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,7 @@ export class LoginComponent {
     this.isSignUpMode = !this.isSignUpMode;
   }
   constructor(private builder: FormBuilder, private toastr: ToastrService, private service: AuthService,
+    private _cookieService: CookieService,
     private router: Router) {
     sessionStorage.clear();
   }
@@ -43,7 +46,8 @@ export class LoginComponent {
           this.result = result;
           this.toastr.success('Registro Exitoso.');
           console.log(this.result.accessToken);
-          sessionStorage.setItem('accessToken', this.result.accessToken);
+          this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
+          /* sessionStorage.setItem('warriors-club-session', this.result.accessToken); */
           this.router.navigate(['home']);
           setTimeout(() => {
             window.location.reload();
@@ -70,7 +74,8 @@ export class LoginComponent {
         next: (item) => {
           this.dataLogin = item;
           console.log(item);
-          sessionStorage.setItem('accessToken', this.dataLogin.accessToken);
+          this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
+          /* sessionStorage.setItem('warriors-club-session', this.dataLogin.accessToken); */
           this.router.navigate(['home']);
           setTimeout(() => {
             window.location.reload();

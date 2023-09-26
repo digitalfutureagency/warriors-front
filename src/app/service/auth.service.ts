@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class AuthService {
 
   apiurl='https://warriors-backend-c2d2de5b1d70.herokuapp.com';
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient, private _cookieService: CookieService) { 
 
   }
 
@@ -29,7 +30,7 @@ export class AuthService {
   
   /* Get Token */
   isloggedin(){
-    return sessionStorage.getItem('accessToken')!=null;
+    return  this._cookieService.get('warriors-club-session')!=null;
   }
 
   Getall(){

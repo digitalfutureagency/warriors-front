@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +13,8 @@ export class HeaderComponent {
   public access: any = 'not';
   showDropdown: boolean = false;
 
-  constructor(private service: AuthService, private router: Router) {
-    this.access = sessionStorage.getItem('accessToken');
+  constructor(private service: AuthService, private router: Router, private _cookieService: CookieService) {
+    this.access = this._cookieService.get('warriors-club-session');
   }
 
   toggleDropdown() {
@@ -23,7 +24,7 @@ export class HeaderComponent {
   logout() {
     console.log('entre')
     this.service.LogoutUser(this.access)
-    sessionStorage.removeItem("accessToken");
+    this._cookieService.remove("warriors-club-session");
     this.router.navigate(['landing']);
     setTimeout(() => {
       window.location.reload();

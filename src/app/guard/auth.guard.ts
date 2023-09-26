@@ -3,12 +3,13 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from '../service/auth.service';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private service: AuthService, private router: Router,private tostr:ToastrService) { }
+  constructor(private service: AuthService, private router: Router,private tostr:ToastrService, private _cookieService: CookieService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -16,7 +17,7 @@ export class AuthGuard implements CanActivate {
     if (this.service.isloggedin()) {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
-        if (menu == 'accessToken') {
+        if (menu == 'warriors-club-session') {
           if (this.service.getrole() == 'admin') {
             return true;
           } else {

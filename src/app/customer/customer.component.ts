@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
+import { FilesService } from '../service/files.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-customer',
@@ -12,11 +14,11 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent {
-
-  constructor(private service: AuthService,private toastr:ToastrService,private router: Router) {
+  public token: any;
+  constructor(private service: AuthService,private toastr:ToastrService,private router: Router, private fileService: FilesService, private _cookieService: CookieService) {
    
     this.SetAccesspermission();
-
+    
   }
   customerlist: any;
   dataSource: any;
@@ -29,7 +31,7 @@ export class CustomerComponent {
   havedelete = false;
 
   ngAfterViewInit(): void {
-
+    this.getAll();
   }
   LoadCustomer() {
     this.service.GetAllCustomer().subscribe(res => {
@@ -66,6 +68,12 @@ export class CustomerComponent {
       this.toastr.warning("You don't have access for Edit")
     }
 
+  }
+  getAll() {
+    this. token = this._cookieService.get('warriors-club-session');
+    this.fileService.GetListFiles(this.token).subscribe(res => {
+      console.log(res);
+    });
   }
   removecustomer(code: any) {
     if(this.havedelete){

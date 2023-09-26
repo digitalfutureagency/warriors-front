@@ -17,7 +17,6 @@ export class AppComponent implements DoCheck {
     loadjsservic.carga(['modernizr'])
     loadjsservic.carga(['main'])
     loadjsservic.carga(['pace.min'])
-    loadjsservic.carga(['plugins'])
     if (role == 'admin') {
       this.isadmin = true;
     }
