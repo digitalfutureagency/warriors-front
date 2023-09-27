@@ -966,19 +966,19 @@ ion-icon {
 
 
 .img-3-slideshow::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: url('assets/slides/banner-3/franja.svg');
-  height: 100vh;
-  background-size: contain;
-  background-position-y: center;
-  background-position-x: calc(25rem - -80rem);
-  background-repeat: no-repeat;
-  z-index: -1;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/slides/banner-3/franja.svg');
+    height: 100vh;
+    background-size: contain;
+    background-position-y: center;
+    background-position-x: calc(25rem - -80rem);
+    background-repeat: no-repeat;
+    z-index: -1;
 }
 
 .text-header {
@@ -3541,6 +3541,7 @@ html.no-csstransitions .home-content__main {
     .home-2 {
         width: 100%;
     }
+
     .home-1 .image-2 img {
         width: 90%;
         object-fit: contain;
@@ -3564,6 +3565,7 @@ html.no-csstransitions .home-content__main {
     .img-3-slideshow::after {
         display: none;
     }
+
     .home-content h1 {
         font-size: 5.6rem;
     }
@@ -4086,6 +4088,34 @@ html.no-csstransitions .home-content__main {
 }
 
 .btn-video:hover .video-icon {
+    background-color: var(--palet-1);
+    background-image: url(assets/images/icons/icon-play.svg);
+}
+
+.btn-video-testimonial {
+    display: inline-block;
+    text-align: center;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    left: 1%;
+}
+
+.video-icon-testimonial {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #DEB457;
+    background-image: url(assets/images/icons/icon-play-black.svg);
+    background-repeat: no-repeat;
+    background-position: 55% center;
+    background-size: 24px 20px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-video-testimonial:hover .video-icon {
     background-color: var(--palet-1);
     background-image: url(assets/images/icons/icon-play.svg);
 }
@@ -9009,3 +9039,14 @@ input::-moz-focus-inner {
     background-color: #fff099;
     color: #c3ab22;
 }
+
+.img-responsive {
+	width: 100% !important;
+	height: 300px !important;
+}
+
+.blue-color {
+        color:blue;
+    }
+
+.center_item {position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);}
