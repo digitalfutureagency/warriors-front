@@ -47,7 +47,6 @@ export class LoginComponent {
           this.toastr.success('Registro Exitoso.');
           console.log(this.result.accessToken);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
-          /* sessionStorage.setItem('warriors-club-session', this.result.accessToken); */
           this.router.navigate(['home']);
           setTimeout(() => {
             window.location.reload();
@@ -75,7 +74,6 @@ export class LoginComponent {
           this.dataLogin = item;
           console.log(item);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
-          /* sessionStorage.setItem('warriors-club-session', this.dataLogin.accessToken); */
           this.router.navigate(['home']);
           setTimeout(() => {
             window.location.reload();

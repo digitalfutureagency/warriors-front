@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie';
 })
 export class AuthService {
 
-  apiurl='https://warriors-backend-c2d2de5b1d70.herokuapp.com';
+  apiurl='https://s1k1fvs5-8080.use2.devtunnels.ms';
 
   constructor(private http:HttpClient, private _cookieService: CookieService) { 
 

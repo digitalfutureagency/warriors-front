@@ -7,8 +7,10 @@ import { CookieService } from 'ngx-cookie';
 })
 export class FilesService {
   apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com';
+  /* apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com'; */
+  /* https://vp2hbl0k-8080.use2.devtunnels.ms */
 
-  constructor(private http: HttpClient, private _cookieService: CookieService) { }
+  constructor(private http: HttpClient) { }
 
   /* Register User */
   UploadImage(token: any) {
@@ -20,9 +22,9 @@ export class FilesService {
     const headers = new HttpHeaders({
       'Token': `${token}`
     });
-
     return this.http.get(this.apiurl + '/api/test/files', { headers: headers });
   }
+
   /* Download a file */
   RegisterUser(name: string, downloadFile: any) {
     return this.http.get(this.apiurl + '/api/test/files/' + name, downloadFile)
