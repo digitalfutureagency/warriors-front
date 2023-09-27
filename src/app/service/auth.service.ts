@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie';
 })
 export class AuthService {
 
-  apiurl='http://localhost:8080';
+  apiurl='https://warriors-backend-c2d2de5b1d70.herokuapp.com';
 
   constructor(private http:HttpClient, private _cookieService: CookieService) { 
 
