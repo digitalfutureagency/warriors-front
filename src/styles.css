@@ -729,7 +729,7 @@ ion-icon {
     display: flex;
     align-content: center;
     flex-wrap: nowrap;
-    width: 100%;
+    width: 60%;
     gap: 1.5rem;
     margin-top: 10rem;
     min-height: 100vh;
@@ -737,12 +737,14 @@ ion-icon {
     z-index: 2;
     background-size: cover;
     background-position: center;
+    justify-content: center;
 }
 
 .home-2 .content {
-    flex: 1 1 40rem;
-    width: 100%;
-    /* padding-top: 9.5rem; */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .home-2 .image {
@@ -768,7 +770,7 @@ ion-icon {
     visibility: hidden;
 }
 
-.content .redir-2 {
+.home-1 .content .redir-2 {
     cursor: pointer;
     width: 500px !important;
     display: flex;
@@ -776,6 +778,18 @@ ion-icon {
     animation: none !important;
     margin-top: 2.5rem;
     margin-right: 10rem;
+    float: left;
+}
+
+.home-2 .content .redir-2 {
+    cursor: pointer;
+    width: 200px !important;
+    display: flex;
+    height: auto !important;
+    animation: none !important;
+    margin-top: 2.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     float: left;
 }
 
@@ -859,7 +873,7 @@ ion-icon {
     background-image: url('assets/slides/banner-1/banner-1.png');
     height: 100vh;
     background-size: contain;
-    background-position-x: center;
+    background-position-x: center !important;
     background-position-y: bottom;
     display: flex;
     align-items: center;
@@ -906,18 +920,18 @@ ion-icon {
   background: linear-gradient(to bottom, transparent 0%, #1e1e22 100%);
 } */
 
-/* .img-2-slideshow {
-    background-image: url('assets/images/banner/banner-2/b2-banner.jpg');
+.img-2-slideshow {
+    background-image: url('assets/slides/banner-2/banner-2.png');
     height: 100vh;
     background-size: cover;
-    background-position: left !important;
+    background-position: center !important;
     display: flex;
     align-items: center;
     text-align: center;
     position: relative;
     z-index: 2;
     justify-content: center;
-} */
+}
 
 
 /* .img-2-slideshow::after {
@@ -937,7 +951,7 @@ ion-icon {
 } */
 
 .img-3-slideshow {
-    background-image: url('assets/images/backgrounds/background-1.png');
+    background-image: url('assets/slides/banner-3/banner-3.png');
     height: 100vh;
     background-size: cover;
     background-position-x: center;
@@ -951,21 +965,21 @@ ion-icon {
 }
 
 
-/* .img-2-slideshow::after {
+.img-3-slideshow::after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: url('../img/svg/line-effect.svg'), linear-gradient(to bottom, #1d003dab 0%, #270066e0 100%);
+  background: url('assets/slides/banner-3/franja.svg');
   height: 100vh;
-  background-size: 20%, cover;
-  background-position-y: bottom, center;
-  background-position-x: right, center;
-  background-repeat: no-repeat, no-repeat;
+  background-size: contain;
+  background-position-y: center;
+  background-position-x: calc(25rem - -80rem);
+  background-repeat: no-repeat;
   z-index: -1;
-} */
+}
 
 .text-header {
     width: 70%;
@@ -985,6 +999,11 @@ ion-icon {
 .redir-2 {
     width: 60%;
     text-align: left;
+}
+
+.button-img {
+    display: flex;
+    justify-content: center;
 }
 
 .text-down {
@@ -3519,6 +3538,9 @@ html.no-csstransitions .home-content__main {
 }
 
 @media only screen and (max-width:800px) {
+    .home-2 {
+        width: 100%;
+    }
     .home-1 .image-2 img {
         width: 90%;
         object-fit: contain;
@@ -3539,6 +3561,9 @@ html.no-csstransitions .home-content__main {
 }
 
 @media only screen and (max-width:700px) {
+    .img-3-slideshow::after {
+        display: none;
+    }
     .home-content h1 {
         font-size: 5.6rem;
     }
@@ -3554,6 +3579,7 @@ html.no-csstransitions .home-content__main {
 }
 
 @media only screen and (max-width:600px) {
+
     .home-content h1 {
         font-size: 5.2rem;
     }
@@ -5961,7 +5987,7 @@ input.whats-input[type=text]:focus {
     right: 0;
     padding: 0 !important;
     bottom: 3rem;
-    z-index: -1;
+    z-index: 999;
 }
 
 .pagination__item {
@@ -5980,6 +6006,7 @@ input.whats-input[type=text]:focus {
 .pagination__item:hover {
     background-color: #fff;
 }
+
 
 /* .container {
     position: relative;
@@ -7582,7 +7609,7 @@ body[data-route-option="next-section"] .c-header-home_buttons {
     padding-top: 8.4rem !important;
 }
 
-.container {
+.container.h-100 {
     position: relative;
     width: 100%;
     background-color: #fff;
@@ -7735,7 +7762,7 @@ form.sign-in-form {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.container:before {
+.container.h-100:before {
     content: "";
     position: absolute;
     height: 2000px;

@@ -391,6 +391,7 @@
 })(jQuery);
 
 
+
 const $window = $(window);
 const $body = $('body');
 
@@ -399,9 +400,9 @@ class Slideshow {
         const defaultOptions = {
             $el: $('.slideshow'),
             showArrows: false,
-            showPagination: true,
-            duration: 6000,
-            autoplay: true
+            showPagination: false,
+            duration: 7000,
+            autoplay: false
         };
         let options = Object.assign({}, defaultOptions, userOptions);
         this.$el = options.$el;
@@ -511,7 +512,7 @@ class Slideshow {
 
 }
 
-(function () {
+(function() {
     let loaded = false;
     let maxLoad = 3000;
 
@@ -524,18 +525,18 @@ class Slideshow {
 
     function addLoadClass() {
         $body.addClass('is-loaded');
-        setTimeout(function () {
+        setTimeout(function() {
             $body.addClass('is-animated');
         }, 600);
     }
 
-    $window.on('load', function () {
+    $window.on('load', function() {
         if (!loaded) {
             loaded = true;
             load();
         }
     });
-    setTimeout(function () {
+    setTimeout(function() {
         if (!loaded) {
             loaded = true;
             load();

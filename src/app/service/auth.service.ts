@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie';
 })
 export class AuthService {
 
-  apiurl='https://s1k1fvs5-8080.use2.devtunnels.ms';
+  apiurl='http://localhost:8080';
 
   constructor(private http:HttpClient, private _cookieService: CookieService) { 
 
