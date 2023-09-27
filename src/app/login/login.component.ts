@@ -45,6 +45,8 @@ export class LoginComponent {
         (result) => {
           this.result = result;
           this.toastr.success('Registro Exitoso.');
+          const dataLoginJSON = JSON.stringify(this.result);
+          localStorage.setItem('warriors-club-session', dataLoginJSON);
           console.log(this.result.accessToken);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
           this.router.navigate(['home']);
@@ -73,11 +75,13 @@ export class LoginComponent {
         next: (item) => {
           this.dataLogin = item;
           console.log(item);
+          const dataLoginJSON = JSON.stringify(this.dataLogin);
+          localStorage.setItem('warriors-club-session', dataLoginJSON);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
           this.router.navigate(['home']);
-          setTimeout(() => {
+          /* setTimeout(() => {
             window.location.reload();
-          }, 100);
+          }, 100); */
         },
         error: (error) => {
           if (error.status === 401) {

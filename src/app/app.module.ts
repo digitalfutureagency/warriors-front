@@ -17,6 +17,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { LandingComponent } from './landing/landing.component';
 import { LayoutModule } from './layout/layout.module';
 import { CookieModule } from 'ngx-cookie';
+import { TruncateTextPipe } from './pipes/truncate-text/truncate-text.pipe';
+import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { CookieModule } from 'ngx-cookie';
     UpdatepopupComponent,
     CustomerComponent,
     LandingComponent,
+    DateFormatPipe,
+    TruncateTextPipe,
   ],
   imports: [
     BrowserModule,

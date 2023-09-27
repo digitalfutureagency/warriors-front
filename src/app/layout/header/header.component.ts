@@ -25,6 +25,7 @@ export class HeaderComponent {
     console.log('entre')
     this.service.LogoutUser(this.access)
     this._cookieService.remove("warriors-club-session");
+    localStorage.removeItem('warriors-club-session');
     this.router.navigate(['landing']);
     setTimeout(() => {
       window.location.reload();

@@ -1,50 +1,61 @@
-<mat-card>
-    <mat-card-header>
-        <h2>Recibos</h2>
-       
-       
-    </mat-card-header>
-    <mat-card-content>
-        <div class="mat-elevation-z8">
-            <button (click)="addcustomer()" mat-raised-button color="primary">Subir recibo de pago</button>
-            <table mat-table matSort  [dataSource]="dataSource">
-          
-              <!-- Position Column -->
-              <ng-container matColumnDef="code">
-                <th mat-header-cell *matHeaderCellDef> Correo </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-          
-              <!-- Name Column -->
-              <ng-container  matColumnDef="name">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef> Nombre </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-              </ng-container>
-          
-              <!-- Weight Column -->
-              <ng-container matColumnDef="creditlimit">
-                <th mat-header-cell *matHeaderCellDef> Recibo de pago </th>
-                <td mat-cell *matCellDef="let element"> {{element.Creditlimit}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> Acción </th>
-                <td mat-cell *matCellDef="let element">  
-                    <button (click)="updatecustomer(element.id)" mat-raised-button color="primary">Edit</button>
-                    <button (click)="removecustomer(element.id)" mat-raised-button color="accent">Delete</button>
-                </td>
-              </ng-container>
-          
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-          
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                           showFirstLastButtons
-                           aria-label="Select page of periodic elements">
-            </mat-paginator>
-          </div>
-    </mat-card-content>
-  </mat-card>
+<mat-card style="margin-top: 8rem;
+height: auto;">
+  <mat-card-header>
+    <h2>RECIBOS DE PAGO</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mat-elevation-z8" style="padding: 2rem;">
+      <div class="container pt-1">
+        <div class="form-group">
+          <label for="fileInput">
+            Seleccionar archivo:
+          </label>
+          <input type="file" mat-raised-button color="primary" (change)="fileChangeListener($event)" [attr.accept]="acceptExtensions"
+            id="fileInput" name="fileInput" />
+        </div>
+        <hr />
+        <div id="fileDisplay">
+        </div>
+      </div>
+      
+      <button (click)="uploadFile()" mat-raised-button *ngIf="fileSelect" >Subir recibo de pago</button>
+      <table mat-table matSort [dataSource]="dataSource" >
 
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Correo </th>
+          <td mat-cell *matCellDef="let element"> {{ email }} </td>
+        </ng-container>
+        
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{ name }} </td>
+        </ng-container>
 
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Fecha </th>
+          <td mat-cell *matCellDef="let element"> {{element.uploadDate | dateFormat }} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="payroll">
+          <th mat-header-cell *matHeaderCellDef> Nombre del documento </th>
+          <td mat-cell *matCellDef="let element"> {{element.name | truncateText: 20}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Acción </th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="downloadFile(element.name)" mat-raised-button>Descargar</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Seleccionar página">
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
