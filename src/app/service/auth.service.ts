@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
 
@@ -7,14 +7,15 @@ import { CookieService } from 'ngx-cookie';
 })
 export class AuthService {
 
-  apiurl='https://vp2hbl0k-8080.use2.devtunnels.ms';
-
+  apiurl='https://warriors-backend-c2d2de5b1d70.herokuapp.com';
+  private token: any;
   /* apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com'; */
   /* https://vp2hbl0k-8080.use2.devtunnels.ms */
   /*  */
 
   constructor(private http:HttpClient, private _cookieService: CookieService) { 
-
+    this.token = this._cookieService.get('warriors-club-session');
+    console.log(this.token)
   }
 
   /* Register User */
@@ -38,17 +39,18 @@ export class AuthService {
   }
 
   /* Update Status */
-  updateuser(inputdata:any){
-    return this.http.post(this.apiurl + '/api/auth/signout/', inputdata);
+  updateuser(userId:any, viewIs: any){
+    const headers = new HttpHeaders({
+      'Token': `${this.token}`
+    });
+    return this.http.put(this.apiurl + '/api/test/admin/userisview/' + userId, viewIs, { headers: headers });
   }
 
   Getall(){
     return this.http.get(this.apiurl);
   }
 
-  
-
-  getuserrole(){
+  /* getuserrole(){
     return this.http.get('http://localhost:3000/role');
   }
 
@@ -62,6 +64,6 @@ export class AuthService {
 
   Getaccessbyrole(role:any,menu:any){
     return this.http.get('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
-  }
+  } */
   
 }

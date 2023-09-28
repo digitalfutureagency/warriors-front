@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -11,31 +11,51 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class UpdatepopupComponent implements OnInit {
 
-  constructor(private builder: FormBuilder, private service: AuthService, private toastr: ToastrService,
+  registerForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private service: AuthService, private toastr: ToastrService,
     private dialogref: MatDialogRef<UpdatepopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.service.getuserrole().subscribe(res => {
+   /*  this.service.getuserrole().subscribe(res => {
       this.rolelist = res;
+    }); */
+
+    this.registerForm = this.fb.group({
+      viewIs: this.fb.control(false)
     });
     
   
   }
-  ngOnInit(): void {
-  }
-
   rolelist: any;
   editdata: any;
 
-  registerform = this.builder.group({
-    isactive: this.builder.control(false)
-  });
+  ngOnInit(): void {
+  }
 
-
+  onCheckboxChange(event: any) {
+    if (this.registerForm) {
+      const isChecked = event.checked;
+      const control = this.registerForm.get('viewIs');
+      if (control) {
+        control.setValue(isChecked);
+      }
+    } else {
+      console.error('registerForm is null');
+    }
+  }
+  
   UpdateUser() {
-    this.service.updateuser(this.registerform).subscribe(res => {
-      this.toastr.success('Estado del usuario actualizado con exito.');
+    const viewIsValue = this.registerForm.get('viewIs')?.value;
+    const payload = {
+      viewIs: viewIsValue
+    };
+    console.log(payload);
+    this.service.updateuser(this.data?.code, payload).subscribe(res => {
+      this.toastr.success('Estado del usuario actualizado con éxito.');
       this.dialogref.close();
     });
   }
+  
+  
 
 }

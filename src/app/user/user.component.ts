@@ -54,18 +54,21 @@ export class UserComponent implements AfterViewInit {
   }
   displayedColumns: string[] = ['name', 'email', 'status', 'role', 'action'];
 
-  updateuser(code: any) {
-    this.OpenDialog('1000ms', '600ms', code);
+  updateuser(code: any, viewIs: any) {
+    this.OpenDialog('1000ms', '600ms', code, viewIs);
+    console.log(code)
   }
 
-  OpenDialog(enteranimation: any, exitanimation: any, code: string) {
+  OpenDialog(enteranimation: any, exitanimation: any, code: string, viewIs: boolean) {
     const popup = this.dialog.open(UpdatepopupComponent, {
       enterAnimationDuration: enteranimation,
       exitAnimationDuration: exitanimation,
       width: '30%',
       data: {
-        usercode: code
+        code,
+        viewIs: viewIs
       }
+
     });
     popup.afterClosed().subscribe(res => {
       this.getAll();

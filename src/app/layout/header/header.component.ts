@@ -27,7 +27,8 @@ export class HeaderComponent {
         email: parsedUserData.email,
         firstName: parsedUserData.firstName,
         lastName: parsedUserData.lastName,
-        roles: parsedUserData.roles
+        roles: parsedUserData.roles,
+        viewIs: parsedUserData.viewIs
       };
     }
     console.log(this.dataUser?.roles)

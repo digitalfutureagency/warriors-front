@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
         if (menu == 'warriors-club-session') {
-          if (this.service.getrole() == 'admin') {
+          if (this.service.Getall()) {
             return true;
           } else {
             this.router.navigate(['']);

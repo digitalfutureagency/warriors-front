@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie';
   providedIn: 'root'
 })
 export class FilesService {
-  apiurl = 'https://vp2hbl0k-8080.use2.devtunnels.ms';
+  apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com';
   private token: any;
   /* apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com'; */
   /* https://vp2hbl0k-8080.use2.devtunnels.ms */

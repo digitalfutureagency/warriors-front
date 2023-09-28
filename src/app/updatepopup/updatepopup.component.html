@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Modificar Estado</h1>
-<form [formGroup]="registerform" (ngSubmit)="UpdateUser()">
+<form [formGroup]="registerForm" (ngSubmit)="UpdateUser()">
     <div mat-dialog-content>
 
         <!-- <mat-form-field>
@@ -14,8 +14,8 @@
 
         <section class="example-section">
             <br>
-            <mat-checkbox  formControlName="isactive" class="example-margin">Activar</mat-checkbox>
-        </section>
+            <mat-checkbox (change)="onCheckboxChange($event)" formControlName="viewIs" class="example-margin">Activar</mat-checkbox>
+          </section>
 
     </div>
     <div mat-dialog-actions>
