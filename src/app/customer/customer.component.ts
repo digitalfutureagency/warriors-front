@@ -67,13 +67,23 @@ export class CustomerComponent {
         this.email = parsedUserData.email;
         this.name = parsedUserData.firstName;
       }
-      const userFiles = this.customerlist.find((customer: any) => customer._id === userId)?.files || [];
-      console.log(userFiles)
-      this.dataSource = new MatTableDataSource(userFiles);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    
+      const currentUser = this.customerlist.find((customer: any) => customer._id === userId);
+      
+      if (currentUser && currentUser.files) {
+        currentUser.files.sort((a:any, b:any) => {
+          return new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime();
+        });
+  
+        this.dataSource = new MatTableDataSource(currentUser.files);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
     });
   }
+  
+
+  
 
   fileChangeListener($event: any) {
     this.fileSelect = true;
@@ -125,23 +135,21 @@ export class CustomerComponent {
 
 
   downloadFile(name: any) {
-    this.fileService.DownloadFile(name).subscribe({
-      next: (res: any) => {
+    this.fileService.DownloadFile(name).subscribe(
+      (res) => {
         if (res instanceof Blob) {
-          // Utiliza la biblioteca 'file-saver' para descargar el archivo
           saveAs(res, name);
           this.toastr.success('Se ha descargado el documento con éxito.');
         } else {
-          // Manejar explícitamente respuestas que no son Blob
           console.error('Error al descargar la imagen: Respuesta no válida');
           this.toastr.error('Error al descargar la imagen: Respuesta no válida');
         }
       },
-      error: (error) => {
+      (error) => {
         console.error('Error al descargar la imagen:', error);
-        this.toastr.error('Error al descargar la imagen.');
-      },
-    });
+        this.toastr.error('Ha ocurrido un error al descargar la imagen.');
+      }
+    );
   }
   
 

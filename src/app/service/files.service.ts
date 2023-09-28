@@ -36,8 +36,9 @@ export class FilesService {
     const headers = new HttpHeaders({
       'Token': `${this.token}`
     });
-    return this.http.get(this.apiurl + '/api/test/files/' + name, { headers: headers })
-  }
+    // Especificar responseType como 'blob' para obtener una respuesta de tipo Blob
+    return this.http.get(this.apiurl + '/api/test/files/' + name, { headers: headers, responseType: 'blob' });
+  }  
 
   // Obtén el token JWT almacenado en sessionStorage
 }
