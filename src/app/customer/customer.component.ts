@@ -2,9 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../service/auth.service';
 import { FilesService } from '../service/files.service';
 import { CookieService } from 'ngx-cookie';
 import { User } from '../model/usermodel';
@@ -31,9 +29,7 @@ export class CustomerComponent {
 
 
   constructor(
-    private service: AuthService,
     private toastr: ToastrService,
-    private router: Router,
     private fileService: FilesService,
     private _cookieService: CookieService
   ) {
@@ -52,7 +48,28 @@ export class CustomerComponent {
   }
   ngAfterViewInit(): void {
     this.getAll();
+    const inputs = document.querySelectorAll<HTMLInputElement>('.inputfile');
+    Array.from(inputs).forEach((input) => {
+      const label = input.nextElementSibling as HTMLElement;
+      const labelVal = label.innerHTML;
+
+      input.addEventListener('change', (e) => {
+        let fileName = '';
+        if (input.files && input.files.length > 1) {
+          fileName = (input.getAttribute('data-multiple-caption') || '').replace('{count}', String(input.files.length));
+        } else {
+          fileName = (e.target as HTMLInputElement).value.split('\\').pop() || '';
+        }
+
+        if (fileName) {
+          label.querySelector('span')!.innerHTML = fileName;
+        } else {
+          label.innerHTML = labelVal;
+        }
+      });
+    });
   }
+
   displayedColumns: string[] = ['email', 'name', 'payroll', 'date', 'action'];
 
 
@@ -67,23 +84,23 @@ export class CustomerComponent {
         this.email = parsedUserData.email;
         this.name = parsedUserData.firstName;
       }
-    
+
       const currentUser = this.customerlist.find((customer: any) => customer._id === userId);
-      
+
       if (currentUser && currentUser.files) {
-        currentUser.files.sort((a:any, b:any) => {
+        currentUser.files.sort((a: any, b: any) => {
           return new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime();
         });
-  
+
         this.dataSource = new MatTableDataSource(currentUser.files);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }
     });
   }
-  
 
-  
+
+
 
   fileChangeListener($event: any) {
     this.fileSelect = true;
@@ -129,6 +146,7 @@ export class CustomerComponent {
       },
       complete: () => {
         this.getAll()
+        this.data = '';
       }
     });
   }
@@ -151,7 +169,7 @@ export class CustomerComponent {
       }
     );
   }
-  
+
 
 
 }

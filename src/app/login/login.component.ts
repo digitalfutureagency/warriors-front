@@ -36,7 +36,7 @@ export class LoginComponent {
     password: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
     role: this.builder.control('user'),
-    /* isactive: this.builder.control(false) */
+    /* viewIs: this.builder.control(false), */
   });
 
   proceedregister() {
@@ -44,10 +44,9 @@ export class LoginComponent {
       this.service.RegisterUser(this.registerform.value).subscribe(
         (result) => {
           this.result = result;
-          this.toastr.success('Registro Exitoso.');
+          this.toastr.success('Registro Exitoso, por favor inicie sesión.');
           const dataLoginJSON = JSON.stringify(this.result);
           localStorage.setItem('warriors-club-session', dataLoginJSON);
-          console.log(this.result.accessToken);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
           this.router.navigate(['home']);
           setTimeout(() => {
@@ -79,9 +78,9 @@ export class LoginComponent {
           localStorage.setItem('warriors-club-session', dataLoginJSON);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);
           this.router.navigate(['home']);
-          /* setTimeout(() => {
+          setTimeout(() => {
             window.location.reload();
-          }, 100); */
+          }, 100);
         },
         error: (error) => {
           if (error.status === 401) {

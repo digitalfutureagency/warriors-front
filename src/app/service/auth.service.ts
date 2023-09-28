@@ -7,7 +7,11 @@ import { CookieService } from 'ngx-cookie';
 })
 export class AuthService {
 
-  apiurl='https://warriors-backend-c2d2de5b1d70.herokuapp.com';
+  apiurl='https://vp2hbl0k-8080.use2.devtunnels.ms';
+
+  /* apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com'; */
+  /* https://vp2hbl0k-8080.use2.devtunnels.ms */
+  /*  */
 
   constructor(private http:HttpClient, private _cookieService: CookieService) { 
 
@@ -33,13 +37,16 @@ export class AuthService {
     return  this._cookieService.get('warriors-club-session')!=null;
   }
 
+  /* Update Status */
+  updateuser(inputdata:any){
+    return this.http.post(this.apiurl + '/api/auth/signout/', inputdata);
+  }
+
   Getall(){
     return this.http.get(this.apiurl);
   }
 
-  updateuser(id:any,inputdata:any){
-    return this.http.put(this.apiurl+'/'+id,inputdata);
-  }
+  
 
   getuserrole(){
     return this.http.get('http://localhost:3000/role');

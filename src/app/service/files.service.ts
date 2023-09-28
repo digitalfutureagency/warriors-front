@@ -6,10 +6,11 @@ import { CookieService } from 'ngx-cookie';
   providedIn: 'root'
 })
 export class FilesService {
-  apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com';
+  apiurl = 'https://vp2hbl0k-8080.use2.devtunnels.ms';
   private token: any;
   /* apiurl = 'https://warriors-backend-c2d2de5b1d70.herokuapp.com'; */
   /* https://vp2hbl0k-8080.use2.devtunnels.ms */
+  /*  */
 
   constructor(private http: HttpClient, private _cookieService: CookieService) { 
     this.token = this._cookieService.get('warriors-club-session');
@@ -36,9 +37,14 @@ export class FilesService {
     const headers = new HttpHeaders({
       'Token': `${this.token}`
     });
-    // Especificar responseType como 'blob' para obtener una respuesta de tipo Blob
     return this.http.get(this.apiurl + '/api/test/files/' + name, { headers: headers, responseType: 'blob' });
   }  
 
-  // Obtén el token JWT almacenado en sessionStorage
+  /* Get list of files ADMIN */
+  GetListAdminFiles() {
+    const headers = new HttpHeaders({
+      'Token': `${this.token}`
+    });
+    return this.http.get(this.apiurl + '/api/test/admin/files' , { headers: headers });
+  }  
 }

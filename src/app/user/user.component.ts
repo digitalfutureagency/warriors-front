@@ -6,6 +6,10 @@ import { MatSort } from '@angular/material/sort';
 import { AuthService } from '../service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdatepopupComponent } from '../updatepopup/updatepopup.component'
+import { ToastrService } from 'ngx-toastr';
+import { FilesService } from '../service/files.service';
+import { CookieService } from 'ngx-cookie';
+import { User } from '../model/usermodel';
 
 @Component({
   selector: 'app-user',
@@ -14,14 +18,29 @@ import { UpdatepopupComponent } from '../updatepopup/updatepopup.component'
 })
 export class UserComponent implements AfterViewInit {
 
-  constructor(private builder: FormBuilder, private service: AuthService, private dialog: MatDialog) {
-    this.LoadUser();
-  }
+  public token: any;
+  public data: any;
+  public email: any;
+  public name: any;
   userlist: any;
   dataSource: any;
+  public dataUser: User | null = null;
+  public myReader: FileReader = new FileReader();
+  customerlist: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  constructor(
+    private builder: FormBuilder, 
+    private service: AuthService, 
+    private dialog: MatDialog,
+    private toastr: ToastrService,
+    private fileService: FilesService,
+    private _cookieService: CookieService) {
+    
+    this.getAll();
+  }
+ 
   ngAfterViewInit(): void {
 
   }
@@ -33,7 +52,7 @@ export class UserComponent implements AfterViewInit {
       this.dataSource.sort = this.sort;
     });
   }
-  displayedColumns: string[] = ['username', 'name', 'email', 'status', 'role', 'action'];
+  displayedColumns: string[] = ['name', 'email', 'status', 'role', 'action'];
 
   updateuser(code: any) {
     this.OpenDialog('1000ms', '600ms', code);
@@ -49,10 +68,16 @@ export class UserComponent implements AfterViewInit {
       }
     });
     popup.afterClosed().subscribe(res => {
-      this.LoadUser();
+      this.getAll();
     });
   }
 
-
-
+  getAll() {
+    this.fileService.GetListAdminFiles().subscribe(res => {
+      this.customerlist = res;
+      this.dataSource = new MatTableDataSource(this.customerlist);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
 }

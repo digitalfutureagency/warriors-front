@@ -18,41 +18,22 @@ export class UpdatepopupComponent implements OnInit {
       this.rolelist = res;
     });
     
-    
-
+  
   }
   ngOnInit(): void {
-    if (this.data.usercode != '' && this.data.usercode != null) {
-      this.loaduserdata(this.data.usercode);
-    }
   }
+
   rolelist: any;
   editdata: any;
 
   registerform = this.builder.group({
-    id: this.builder.control(''),
-    name: this.builder.control(''),
-    password: this.builder.control(''),
-    email: this.builder.control(''),
-    gender: this.builder.control('male'),
-    role: this.builder.control('', Validators.required),
     isactive: this.builder.control(false)
   });
 
-  loaduserdata(code: any) {
-    this.service.LoginUser(code).subscribe(res => {
-      this.editdata = res;
-      console.log(this.editdata);
-      this.registerform.setValue({
-        id: this.editdata.id, name: this.editdata.name,
-        password: this.editdata.password, email: this.editdata.email, gender: this.editdata.gender,
-        role: this.editdata.role, isactive: this.editdata.isactive
-      });
-    });
-  }
+
   UpdateUser() {
-    this.service.updateuser(this.registerform.value.id, this.registerform.value).subscribe(res => {
-      this.toastr.success('Updated successfully.');
+    this.service.updateuser(this.registerform).subscribe(res => {
+      this.toastr.success('Estado del usuario actualizado con exito.');
       this.dialogref.close();
     });
   }
