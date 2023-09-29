@@ -20,7 +20,7 @@ export class CustomerComponent {
   public name: any;
   public dataUser: User | null = null;
   public fileSelect = false;
-  public acceptExtensions = '.png, .jpeg, .jpg';
+  public acceptExtensions = '.png, .jpeg, .jpg, .pdf';
   public myReader: FileReader = new FileReader();
   customerlist: any;
   dataSource: any;
@@ -115,6 +115,8 @@ export class CustomerComponent {
       case '.JPG':
       case 'jpeg':
       case 'JPEG':
+      case '.pdf':
+      case '.PDF':
         break;
       default:
         $event.target.files[0] = '';
@@ -142,8 +144,8 @@ export class CustomerComponent {
         this.toastr.success('El documento se ha subido con éxito.');
       },
       error: (error) => {
-        console.error('Error al subir la imagen:', error);
-        this.toastr.error('Ha ocurrido un error al subir la imagen.');
+        console.error('Error al subir el archivo:', error);
+        this.toastr.error('Ha ocurrido un error al subir el archivo.');
       },
       complete: () => {
         this.getAll()
@@ -160,13 +162,13 @@ export class CustomerComponent {
           saveAs(res, name);
           this.toastr.success('Se ha descargado el documento con éxito.');
         } else {
-          console.error('Error al descargar la imagen: Respuesta no válida');
-          this.toastr.error('Error al descargar la imagen: Respuesta no válida');
+          console.error('Error al descargar el documento: Respuesta no válida');
+          this.toastr.error('Error al descargar el documento: Respuesta no válida');
         }
       },
       (error) => {
-        console.error('Error al descargar la imagen:', error);
-        this.toastr.error('Ha ocurrido un error al descargar la imagen.');
+        console.error('Error al descargar el documento:', error);
+        this.toastr.error('Ha ocurrido un error al descargar el documento.');
       }
     );
   }

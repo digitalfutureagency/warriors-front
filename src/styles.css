@@ -7,7 +7,7 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Montserrat-Regular';
 }
 
 .mdc-button {
@@ -2482,7 +2482,7 @@ input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 
 .display-1 {
-    font-family: "Chivo", sans-serif !important;
+    font-family: 'Montserrat-Bold' !important;
     font-weight: 600 !important;
     font-size: 5.5rem !important;
     line-height: 1.236 !important;
@@ -2493,7 +2493,7 @@ input::-moz-focus-inner {
 }
 
 .display-2 {
-    font-family: "Chivo", sans-serif;
+    font-family: 'Montserrat-Bold' !important;
     font-weight: 600;
     font-size: 4.6rem;
     line-height: 1.217;
@@ -2508,7 +2508,27 @@ input::-moz-focus-inner {
     margin-top: 0;
     margin-bottom: 2rem;
 }
+.script {
+    font-size: 10rem !important;
+    line-height: 1.236 !important;
+    font-weight: normal!important;
+    letter-spacing: -0.03rem !important;
+    margin-top: 0 !important;
+    margin-bottom: -2.8rem !important;
+    color: var(--white);
+    font-family: 'Photograph-Signature' !important;
+}
 
+.back-image .display-1 {
+    color: var(--white);
+}
+
+.back-image {
+    background-image: url(assets/images/final.png);
+    background-size: cover;
+    border-radius: 3rem 3rem 3rem 7rem;
+    margin-bottom: 2rem;
+}
 
 /* ------------------------------------------------------------------- 
  * ## section header
@@ -4359,13 +4379,13 @@ app-home {
 
 .yt-card .title a {
     font-size: 18px;
-    color: black;
+    color: black !important;
     font-weight: bold;
     text-decoration: none;
 }
 
 .yt-card .title {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .yt-card a {

@@ -17,8 +17,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { LandingComponent } from './landing/landing.component';
 import { LayoutModule } from './layout/layout.module';
 import { CookieModule } from 'ngx-cookie';
-import { TruncateTextPipe } from './pipes/truncate-text/truncate-text.pipe';
-import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
+import { ModalContentComponent } from './modal-content/modal-content.component';
+import { PipesModule } from './pipes/pipe.module';
 
 
 @NgModule({
@@ -30,8 +30,7 @@ import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
     UpdatepopupComponent,
     CustomerComponent,
     LandingComponent,
-    DateFormatPipe,
-    TruncateTextPipe,
+    ModalContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +40,7 @@ import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
     MaterialModule,
     HttpClientModule,
     LayoutModule,
+    PipesModule,
     ToastrModule.forRoot(),
     CookieModule.forRoot()
   ],
