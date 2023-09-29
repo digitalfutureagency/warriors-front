@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { FilesService } from '../service/files.service';
 import { CookieService } from 'ngx-cookie';
 import { User } from '../model/usermodel';
+import { FilespopupComponent } from '../filespopup/filespopup.component';
+import { ViewportRuler } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-user',
@@ -31,16 +33,17 @@ export class UserComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private builder: FormBuilder, 
-    private service: AuthService, 
+    private builder: FormBuilder,
+    private service: AuthService,
     private dialog: MatDialog,
     private toastr: ToastrService,
     private fileService: FilesService,
+    private viewportRuler: ViewportRuler,
     private _cookieService: CookieService) {
-    
+
     this.getAll();
   }
- 
+
   ngAfterViewInit(): void {
 
   }
@@ -52,18 +55,48 @@ export class UserComponent implements AfterViewInit {
       this.dataSource.sort = this.sort;
     });
   }
-  displayedColumns: string[] = ['name', 'email', 'status', 'role', 'action'];
+  displayedColumns: string[] = ['name', 'email', 'status', 'role', 'payroll', 'action'];
 
   updateuser(code: any, viewIs: any) {
     this.OpenDialog('1000ms', '600ms', code, viewIs);
     console.log(code)
   }
 
+  viewDocuments(files: any) {
+    this.OpenDialogDocument('1000ms', '600ms', files);
+    console.log(files)
+  }
+
+  OpenDialogDocument(enteranimation: any, exitanimation: any, files: any) {
+    const windowWidth = this.viewportRuler.getViewportSize().width;
+    let dialogWidth = '45%';
+    if (windowWidth <= 768) {
+      dialogWidth = '100%';
+    }
+    const popup = this.dialog.open(FilespopupComponent, {
+      enterAnimationDuration: enteranimation,
+      exitAnimationDuration: exitanimation,
+      width: dialogWidth,
+      data: {
+        files
+      }
+
+    });
+    popup.afterClosed().subscribe(res => {
+      this.getAll();
+    });
+  }
+
   OpenDialog(enteranimation: any, exitanimation: any, code: string, viewIs: boolean) {
+    const windowWidth = this.viewportRuler.getViewportSize().width;
+    let dialogWidth = '30%';
+    if (windowWidth <= 768) {
+      dialogWidth = '100%';
+    }
     const popup = this.dialog.open(UpdatepopupComponent, {
       enterAnimationDuration: enteranimation,
       exitAnimationDuration: exitanimation,
-      width: '30%',
+      width: dialogWidth,
       data: {
         code,
         viewIs: viewIs

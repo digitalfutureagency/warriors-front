@@ -60,10 +60,10 @@
     <div class="row forex-card" >
         <div class="col-full slick-slider forex-vimeo">
             <div class="yt-card" *ngFor="let video of videos; let i = index">
-                <div class="thumb">
+                <div class="thumb" (click)="openModal(video)">
                     <img [src]="'assets/images/forex/mis-' + (i + 1) + '.png'" />
                 </div>
-                <button mat-button (click)="openModal(video)">Abrir Modal</button>
+                
                 <div class="details">
                     <div class="channel">
                         <a target="_blank">
@@ -77,7 +77,7 @@
                         <div class="channel-name"><a target="_blank">Warriors
                                 Club</a></div>
                         <div class="views">
-                            <span id="views">200K Vistas</span> ·
+                            <span id="views"> {{ video.stats.plays}} Vistas.</span> 
                             <span> {{video.created_time | dateFormat}} </span>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                 <div class="thumb">
                     <img [src]="'assets/images/indices-sinteticos/mis-' + (i + 1) + '.png'" />
                 </div>
-                <button mat-button (click)="openModal(video)">Abrir Modal</button>
+
                 <div class="details">
                     <div class="channel">
                         <a target="_blank">
@@ -118,7 +118,7 @@
                         <div class="channel-name"><a target="_blank">Warriors
                                 Club</a></div>
                         <div class="views">
-                            <span id="views">200K Vistas</span> ·
+                            <span id="views"> {{ video.stats.plays}} Vistas.</span> 
                             <span> {{video.created_time | dateFormat}} </span>
                         </div>
                     </div>

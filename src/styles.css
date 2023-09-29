@@ -3053,9 +3053,6 @@ header div {
         padding: 40px 40px 64px;
     }
 
-    .header-menu-toggle {
-        right: 36px;
-    }
 }
 
 
@@ -4119,8 +4116,31 @@ html.no-csstransitions .home-content__main {
     text-align: center;
     outline: none;
     position: absolute;
-    top: 50%;
-    left: 1%;
+    top: 3%;
+    left: 14%;
+}
+
+.btn-video-vimeo {
+    display: inline-block;
+    text-align: center;
+    outline: none;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+
+.video-icon-vimeo {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    background-image: url(assets/images/icons/icon-play-black.svg);
+    background-repeat: no-repeat;
+    background-position: 55% center;
+    background-size: 24px 20px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .video-icon-testimonial {
@@ -9140,4 +9160,9 @@ input::-moz-focus-inner {
 
 .mat-elevation-z8 {
     padding: 2rem;
+    overflow-x: scroll !important;
+}
+
+.mat-mdc-paginator-range-label {
+    margin: 0px !important;
 }

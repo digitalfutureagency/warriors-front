@@ -19,6 +19,7 @@ import { LayoutModule } from './layout/layout.module';
 import { CookieModule } from 'ngx-cookie';
 import { ModalContentComponent } from './modal-content/modal-content.component';
 import { PipesModule } from './pipes/pipe.module';
+import { FilespopupComponent } from './filespopup/filespopup.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { PipesModule } from './pipes/pipe.module';
     CustomerComponent,
     LandingComponent,
     ModalContentComponent,
+    FilespopupComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,12 @@ height: auto;">
                 <th mat-header-cell *matHeaderCellDef> Estado </th>
                 <td mat-cell *matCellDef="let element"> {{element.viewIs ? 'Activo':'Inactivo'}} </td>
               </ng-container>
+              <ng-container matColumnDef="payroll">
+                <th mat-header-cell *matHeaderCellDef> Recibos de pagos </th>
+                <td mat-cell *matCellDef="let element">
+                  <button *ngIf="element.role !== 'admin'" (click)="viewDocuments(element.files)" mat-raised-button color="primary">Mostrar</button>
+                </td>
+              </ng-container>
               <ng-container matColumnDef="role">
                 <th mat-header-cell *matHeaderCellDef> Rol </th>
                 <td mat-cell *matCellDef="let element"> {{ element.roles.includes('admin') ? 'Administrador' : 'Usuario' }}</td>

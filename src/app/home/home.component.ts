@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { VimeoService } from '../service/vimeo.service';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ViewportRuler } from '@angular/cdk/scrolling';
 
 declare var Vimeo: any;
 @Component({
@@ -29,7 +30,8 @@ export class HomeComponent {
   constructor(
     private toastr: ToastrService,
     private vimeoService: VimeoService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private viewportRuler: ViewportRuler,
   ) {
     const userData = localStorage.getItem('warriors-club-session');
 
@@ -46,6 +48,8 @@ export class HomeComponent {
     }
     this.getAll()
   }
+
+  
 
   getAll() {
     if (this.dataUser?.viewIs) {
@@ -65,7 +69,7 @@ export class HomeComponent {
         (resSintetics: any) => {
           console.log('Indices Sinteticos', resSintetics);
           this.videosSintetics = resSintetics.data;
-          this.videosSintetics.reverse();
+          this.videosSintetics;
         },
         (error: any) => {
           console.error('Error al traer los videos:', error);
@@ -79,8 +83,13 @@ export class HomeComponent {
   }
 
   openModal(video: any) {
+    const windowWidth = this.viewportRuler.getViewportSize().width;
+    let dialogWidth = '600px';
+    if (windowWidth <= 768) {
+      dialogWidth = '100%';
+    }
     this.dialog.open(ModalContentComponent, {
-      width: '800px', // Ancho del modal (ajusta según tus necesidades)
+      width: dialogWidth,
       data: {
         videoUrl: video.player_embed_url,
         password: video.password,
