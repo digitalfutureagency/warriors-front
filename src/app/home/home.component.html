@@ -101,7 +101,7 @@
     <div class="row forex-card">
         <div class="col-full slick-slider indices-vimeo">
             <div class="yt-card" *ngFor="let video of videosSintetics; let i = index">
-                <div class="thumb">
+                <div class="thumb" (click)="openModal(video)">
                     <img [src]="'assets/images/indices-sinteticos/mis-' + (i + 1) + '.png'" />
                 </div>
 
