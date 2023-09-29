@@ -2856,7 +2856,7 @@ header div {
     font-size: 1.4rem;
     text-transform: uppercase;
     letter-spacing: .2rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5) !important;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     position: absolute;
@@ -2876,7 +2876,7 @@ header div {
     margin-top: -1px;
     right: auto;
     bottom: auto;
-    background-color: white;
+    background-color: white !important;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     font: 0/0 a;
