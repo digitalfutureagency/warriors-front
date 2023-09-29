@@ -435,7 +435,7 @@ class Slideshow {
             showArrows: false,
             showPagination: false,
             duration: 7000,
-            autoplay: false
+            autoplay: true
         };
         let options = Object.assign({}, defaultOptions, userOptions);
         this.$el = options.$el;
