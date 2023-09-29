@@ -13,15 +13,24 @@ export class AppComponent implements DoCheck {
   isMenuVisible = false;
   constructor(private route: Router, private loadjsservic: LoadjsService) {
     let role = sessionStorage.getItem('role');
-    loadjsservic.carga(['jquery-3.2.1.min'])
-    loadjsservic.carga(['modernizr'])
-    loadjsservic.carga(['main'])
-    loadjsservic.carga(['pace.min'])
     if (role == 'admin') {
       this.isadmin = true;
     }
   }
 
+  ngOnInit() {
+    this.loadjsservic
+      .load(['jquery-3.2.1.min'])
+      .then(() => {
+        return this.loadjsservic.load(['modernizr', 'main', 'pace.min']);
+      })
+      .then(() => {
+        return this.loadjsservic.load(['modernizr', 'main', 'pace.min']);
+      })
+      .catch((error) => {
+        console.error('Error al cargar los scripts:', error);
+      });
+  }
 
   ngDoCheck(): void {
     let currentroute = this.route.url;
