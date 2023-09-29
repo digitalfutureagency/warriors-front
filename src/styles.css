@@ -1154,7 +1154,7 @@ h1,
 
     h1,
     .h1 {
-        font-size: 3.3rem;
+        font-size: 3.3rem !important;
         letter-spacing: -.07rem;
     }
 }
@@ -1869,7 +1869,7 @@ legend {
     font-weight: 700;
     font-size: 1.4rem;
     line-height: 2;
-    margin-bottom: -0.2rem!important;
+    margin-bottom: -0.2rem !important;
     color: #000000;
     display: block;
 }
@@ -2508,10 +2508,11 @@ input::-moz-focus-inner {
     margin-top: 0;
     margin-bottom: 2rem;
 }
+
 .script {
     font-size: 10rem !important;
     line-height: 1.236 !important;
-    font-weight: normal!important;
+    font-weight: normal !important;
     letter-spacing: -0.03rem !important;
     margin-top: 0 !important;
     margin-bottom: -2.8rem !important;
@@ -2632,7 +2633,7 @@ input::-moz-focus-inner {
 
 @media only screen and (max-width:1000px) {
     .display-1 {
-        font-size: 5.2rem;
+        font-size: 5.2rem !important;
     }
 
     .display-2 {
@@ -2645,8 +2646,14 @@ input::-moz-focus-inner {
 }
 
 @media only screen and (max-width:800px) {
+    .btn-video-testimonial {
+        bottom: -13px;
+        left: 15%;
+        top: 0% !important;
+    }
+
     .display-1 {
-        font-size: 4.4rem;
+        font-size: 4.4rem !important;
     }
 
     .display-2 {
@@ -2658,7 +2665,7 @@ input::-moz-focus-inner {
     }
 
     .item-title {
-        font-size: 2.4rem;
+        font-size: 2.4rem !important;
     }
 
     .section-header {
@@ -2674,21 +2681,21 @@ input::-moz-focus-inner {
 
 @media only screen and (max-width:500px) {
     .display-1 {
-        font-size: 4.2rem;
+        font-size: 4.2rem !important;
     }
 
     .display-2 {
-        font-size: 3.8rem;
+        font-size: 3.8rem !important;
     }
 }
 
 @media only screen and (max-width:400px) {
     .display-1 {
-        font-size: 3.8rem;
+        font-size: 3.8rem !important;
     }
 
     .display-2 {
-        font-size: 3.6rem;
+        font-size: 3.6rem !important;
     }
 
     .section-header.has-bottom-sep::before {
@@ -2698,11 +2705,11 @@ input::-moz-focus-inner {
 
 @media only screen and (max-width:350px) {
     .display-1 {
-        font-size: 3.6rem;
+        font-size: 3.6rem !important;
     }
 
     .display-2 {
-        font-size: 3.4rem;
+        font-size: 3.4rem !important;
     }
 }
 
@@ -4333,7 +4340,7 @@ html.no-csstransitions .home-content__main {
 
 app-home {
     background: var(--palet-2);
-} 
+}
 
 .discover .btn-link {
     margin-inline: auto;
@@ -6048,7 +6055,8 @@ input.whats-input[type=text]:focus {
     background-color: #f2f2f2;
 }
 
-.bx-log-out, .bx-cog {
+.bx-log-out,
+.bx-cog {
     margin-right: 10px;
 }
 
@@ -8298,7 +8306,7 @@ h6,
 
 h1,
 .h1 {
-    font-size: 3.6rem;
+    font-size: 3.6rem !important;
     line-height: 1.222;
     letter-spacing: -.05rem;
 }
@@ -8307,7 +8315,7 @@ h1,
 
     h1,
     .h1 {
-        font-size: 3.3rem;
+        font-size: 3.3rem !important;
         letter-spacing: -.07rem;
     }
 }
@@ -9088,15 +9096,21 @@ input::-moz-focus-inner {
 }
 
 .img-responsive {
-	width: 100% !important;
-	height: 300px !important;
+    width: 100% !important;
+    height: 300px !important;
 }
 
 .blue-color {
-        color:blue;
-    }
+    color: blue;
+}
 
-.center_item {position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);}
+.center_item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /**********File Inputs**********/
 .container-input {
     text-align: center;
@@ -9118,7 +9132,7 @@ input::-moz-focus-inner {
     z-index: -1;
 }
 
-.inputfile + label {
+.inputfile+label {
     max-width: 80%;
     font-size: 1.25rem;
     font-weight: 700;
@@ -9130,7 +9144,7 @@ input::-moz-focus-inner {
     padding: 0.625rem 1.25rem;
 }
 
-.inputfile + label svg {
+.inputfile+label svg {
     width: 1em;
     height: 1em;
     vertical-align: middle;
@@ -9140,21 +9154,21 @@ input::-moz-focus-inner {
 }
 
 .iborrainputfile {
-	font-size:16px; 
-	font-weight:normal;
-	font-family: 'Lato';
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Lato';
 }
 
 /* style 1 */
 
-.inputfile-1 + label {
+.inputfile-1+label {
     color: #fff;
     background-color: #c39f77;
 }
 
-.inputfile-1:focus + label,
-.inputfile-1.has-focus + label,
-.inputfile-1 + label:hover {
+.inputfile-1:focus+label,
+.inputfile-1.has-focus+label,
+.inputfile-1+label:hover {
     background-color: #9f8465;
 }
 
