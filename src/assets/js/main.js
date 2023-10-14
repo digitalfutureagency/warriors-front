@@ -289,6 +289,23 @@
                 }
             }]
         });
+
+        $('.dummies-vimeo').slick({
+            arrows: false,
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            pauseOnFocus: false,
+            autoplaySpeed: 1500,
+            responsive: [{
+                breakpoint: 1001,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
+        });
     };
 
 

@@ -128,6 +128,47 @@
     </div>
 </section>
 
+<section id="dummies" class="s-about-how" *ngIf="this.dataUser?.viewIs">
+    <div class="row process-wrap section-header align-center back-image" data-aos="fade-up">
+        <div class="col-full">
+            <h1 class="script">
+                Módulo
+            </h1>
+            <h1 class="display-1">
+                MARKETING PARA DUMMIES
+            </h1>
+        </div>
+    </div>
+    <div class="row forex-card">
+        <div class="col-full slick-slider dummies-vimeo">
+            <div class="yt-card" *ngFor="let video of videosDummies; let i = index">
+                <div class="thumb" (click)="openModal(video)">
+                    <img [src]="video.pictures.base_link" />
+                </div>
+
+                <div class="details">
+                    <div class="channel">
+                        <a target="_blank">
+                            <img src="assets/logo/logo-v2.svg" />
+                        </a>
+                    </div>
+                    <div class="info">
+                        <div class="title"><a target="_blank">
+                            {{video.name }}</a>
+                        </div>
+                        <div class="channel-name"><a target="_blank">Warriors
+                                Club</a></div>
+                        <div class="views">
+                            <span id="views"> {{ video.stats.plays}} Vistas.</span> 
+                            <span> {{video.created_time | dateFormat}} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- post released -->
 <section id="blog" class="s-home target-section">
     <div class="row section-header has-bottom-sep">

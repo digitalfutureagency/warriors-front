@@ -49,7 +49,6 @@ export class UpdatepopupComponent implements OnInit {
     const payload = {
       viewIs: viewIsValue
     };
-    console.log(payload);
     this.service.updateuser(this.data?.code, payload).subscribe(res => {
       this.toastr.success('Estado del usuario actualizado con éxito.');
       this.dialogref.close();

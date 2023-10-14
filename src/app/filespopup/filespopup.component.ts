@@ -26,16 +26,12 @@ export class FilespopupComponent {
 
   }
   ngOnInit(): void {
-    console.log(this.data)
     let filesOrd = this.data.files.sort((a: any, b: any) => {
       return new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime();
     });
-
     this.dataSource = new MatTableDataSource(filesOrd);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
-    console.log(this.dataSource)
   }
 
   downloadFile(name: any) {

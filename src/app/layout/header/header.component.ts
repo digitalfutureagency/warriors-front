@@ -31,7 +31,6 @@ export class HeaderComponent {
         viewIs: parsedUserData.viewIs
       };
     }
-    console.log(this.dataUser?.roles)
     if (this.dataUser?.email == 'ccamargo07@gmail.com') {
       this.aplied = "assets/images/avatars/cesar.png";
     } else if (this.dataUser?.email == 'heidy.parada@gmail.com') {
@@ -49,7 +48,6 @@ export class HeaderComponent {
   }
 
   logout() {
-    console.log('entre')
     this.service.LogoutUser(this.access)
     this._cookieService.remove("warriors-club-session");
     localStorage.removeItem('warriors-club-session');
@@ -60,7 +58,6 @@ export class HeaderComponent {
   }
 
   admin() {
-    console.log('entre')
     this.router.navigate(['user']);
     setTimeout(() => {
       window.location.reload();

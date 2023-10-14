@@ -73,7 +73,6 @@ export class LoginComponent {
       this.service.LoginUser(this.loginform.value).subscribe({
         next: (item) => {
           this.dataLogin = item;
-          console.log(item);
           const dataLoginJSON = JSON.stringify(this.dataLogin);
           localStorage.setItem('warriors-club-session', dataLoginJSON);
           this._cookieService.put('warriors-club-session', this.dataLogin.accessToken);

@@ -16,7 +16,6 @@ export class ModalContentComponent {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data)
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.videoUrl);
   }
   

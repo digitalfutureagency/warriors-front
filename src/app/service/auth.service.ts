@@ -15,7 +15,6 @@ export class AuthService {
 
   constructor(private http:HttpClient, private _cookieService: CookieService) { 
     this.token = this._cookieService.get('warriors-club-session');
-    console.log(this.token)
   }
 
   /* Register User */

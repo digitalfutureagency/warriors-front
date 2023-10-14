@@ -23,9 +23,10 @@ export class HomeComponent {
   currentIndex: number = 0;
   private idForex = 17139766;
   private idsinteticIndex = 16811190;
-  private traderMind = 17153257;
+  private idmarketingDummies = 18084609;
   public videos: any[] = [];
   public videosSintetics: any[] = [];
+  public videosDummies: any[] = [];
 
   constructor(
     private toastr: ToastrService,
@@ -57,14 +58,28 @@ export class HomeComponent {
       this.vimeoService.GetListVideosVimeo(this.idForex).subscribe(
         (resForex: any) => {
           console.log('Forex', resForex);
+      
           this.videos = resForex.data;
-          this.videos.reverse();
+      
+          this.videos.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+      
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          });
         },
         (error: any) => {
           console.error('Error al traer los videos:', error);
           this.toastr.error('Ha ocurrido un error al traer los videos.');
         }
       );
+      
       this.vimeoService.GetListVideosVimeo(this.idsinteticIndex).subscribe(
         (resSintetics: any) => {
           console.log('Indices Sinteticos', resSintetics);
@@ -76,6 +91,30 @@ export class HomeComponent {
           this.toastr.error('Ha ocurrido un error al traer los videos.');
         }
       );
+      this.vimeoService.GetListVideosVimeo(this.idmarketingDummies).subscribe(
+        (resDummies: any) => {
+          console.log('Marketing para Dummies', resDummies);
+          this.videosDummies = resDummies.data;
+      
+          this.videosDummies.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+      
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          });
+        },
+        (error: any) => {
+          console.error('Error al traer los videos:', error);
+          this.toastr.error('Ha ocurrido un error al traer los videos.');
+        }
+      );
+      
       
     } else {
       this.toastr.warning('Lo sentimos, no puede ver los videos, confirma tu subscripción para seguir disfrutando de los servicios.');

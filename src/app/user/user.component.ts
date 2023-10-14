@@ -59,12 +59,10 @@ export class UserComponent implements AfterViewInit {
 
   updateuser(code: any, viewIs: any) {
     this.OpenDialog('1000ms', '600ms', code, viewIs);
-    console.log(code)
   }
 
   viewDocuments(files: any) {
     this.OpenDialogDocument('1000ms', '600ms', files);
-    console.log(files)
   }
 
   OpenDialogDocument(enteranimation: any, exitanimation: any, files: any) {
